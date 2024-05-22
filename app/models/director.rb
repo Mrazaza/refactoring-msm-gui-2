@@ -11,13 +11,9 @@
 #  updated_at :datetime         not null
 #
 class Director < ApplicationRecord
-  validates(:name, presence: true)
-
   def filmography
-    key = self.id
-
-    the_many = Movie.where({ :director_id => key })
-
-    return the_many
+    my_id = self.id
+    matching_movies = Movie.where({ :director_id => my_id })
+    return matching_movies
   end
 end
